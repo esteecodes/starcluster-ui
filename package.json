@@ -1,0 +1,37 @@
+{
+  "name": "clustar-ui",
+  "version": "0.0.1",
+  "description": "Clustar UI — Astro UI component library.",
+  "license": "MIT",
+  "type": "module",
+  "keywords": [
+    "astro",
+    "ui",
+    "component",
+    "library",
+    "components",
+    "design-system",
+    "clustar"
+  ],
+  "homepage": "https://clustar-ui.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esteecodes/clustar-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/esteecodes/clustar-ui/issues"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./Button.astro": "./src/Button.astro",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  }
+}
