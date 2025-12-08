@@ -5,7 +5,7 @@ Astro-first UI components.
 ## Install
 
 ```bash
-npm install clustar-ui
+npm install clustarui
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ npm install clustar-ui
 
 ```astro
 ---
-import { Button } from "clustar-ui";
+import { Button } from "clustarui";
 ---
 
 <Button variant="solid">Hello</Button>
@@ -24,7 +24,7 @@ import { Button } from "clustar-ui";
 
 ```astro
 ---
-import Button from "clustar-ui/Button.astro";
+import Button from "clustarui/Button.astro";
 ---
 
 <Button>Hi</Button>
