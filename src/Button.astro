@@ -4,18 +4,15 @@ export interface Props {
   size?: "sm" | "md";
 }
 
-const {
-  variant = "solid",
-  size = "md",
-} = Astro.props;
+const { variant = "solid", size = "md" } = Astro.props;
 ---
 
-<button class={`clustar-btn ${variant} ${size}`}>
+<button class={`scui-btn ${variant} ${size}`}>
   <slot />
 </button>
 
 <style>
-  .clustar-btn {
+  .scui-btn {
     font: inherit;
     border-radius: 0.75rem;
     padding: 0.5rem 0.9rem;
@@ -23,22 +20,22 @@ const {
     transition: 120ms ease;
   }
 
-  .clustar-btn.solid {
+  .scui-btn.solid {
     background: #111;
     color: #fff;
     border: 1px solid #111;
   }
 
-  .clustar-btn.outline {
+  .scui-btn.outline {
     background: transparent;
     color: #111;
     border: 1px solid #111;
   }
 
-  .clustar-btn.sm { font-size: 0.875rem; }
-  .clustar-btn.md { font-size: 1rem; }
+  .scui-btn.sm { font-size: 0.875rem; }
+  .scui-btn.md { font-size: 1rem; }
 
-  .clustar-btn:hover {
+  .scui-btn:hover {
     transform: translateY(-1px);
   }
 </style>

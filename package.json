@@ -1,5 +1,5 @@
 {
-  "name": "clustarui",
+  "name": "starcluster-ui",
   "version": "0.0.1",
   "description": "Clustar UI — Astro UI component library.",
   "license": "MIT",
@@ -11,15 +11,18 @@
     "library",
     "components",
     "design-system",
-    "clustar"
+    "star",
+    "cluster",
+    "star-cluster",
+    "starcluster-ui"
   ],
-  "homepage": "https://clustarui.dev",
+  "homepage": "https://starcluster-ui.dev",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/esteecodes/clustarui.git"
+    "url": "git+https://github.com/esteecodes/starcluster-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/esteecodes/clustarui/issues"
+    "url": "https://github.com/esteecodes/starcluster-ui/issues"
   },
   "exports": {
     ".": "./src/index.js",
