@@ -1,175 +1,187 @@
 ---
 export interface Props {
-  variant?: "primary" | "neutral" | "danger" | "success";
-  size?: "small" | "medium" | "large";
+	variant?: "primary" | "neutral" | "danger" | "success";
+	size?: "small" | "medium" | "large";
 
-  outline?: boolean;
-  pill?: boolean;
-  elevated?: boolean;
-  bloated?: boolean;
+	outline?: boolean;
+	pill?: boolean;
+	elevated?: boolean;
+	bloated?: boolean;
 
-  type?: "button" | "submit" | "reset";
-  disabled?: boolean;
+	type?: "button" | "submit" | "reset";
+	disabled?: boolean;
 
-  // form-related (should go to the inner button)
-  name?: string;
-  value?: string;
+	// form-related (should go to the inner button)
+	name?: string;
+	value?: string;
 
-  // wrapper-friendly common attrs
-  id?: string;
-  class?: string;
-  style?: string;
-  title?: string;
+	// wrapper-friendly common attrs
+	id?: string;
+	class?: string;
+	style?: string;
+	title?: string;
 
-  // Accessibility passthrough
-  "aria-label"?: string;
-  "aria-labelledby"?: string;
-  "aria-describedby"?: string;
+	// Accessibility passthrough
+	"aria-label"?: string;
+	"aria-labelledby"?: string;
+	"aria-describedby"?: string;
 
-  // Data attrs
-  [key: `data-${string}`]: any;
+	// Data attrs
+	[key: `data-${string}`]: any;
 }
 
 const {
-  variant = "primary",
-  size = "medium",
-  outline = false,
-  pill = false,
-  elevated = false,
-  bloated = false,
-  type = "button",
-  disabled = false,
-  name,
-  value,
-  ...rest
+	variant = "primary",
+	size = "medium",
+	outline = false,
+	pill = false,
+	elevated = false,
+	bloated = false,
+	type = "button",
+	disabled = false,
+	name,
+	value,
+	...rest
 } = Astro.props;
 
 // Presence-only attributes:
 const booleanAttrs = {
-  ...(outline ? { outline: "" } : {}),
-  ...(pill ? { pill: "" } : {}),
-  ...(elevated ? { elevated: "" } : {}),
-  ...(bloated ? { bloated: "" } : {}),
+	...(outline ? { outline: "" } : {}),
+	...(pill ? { pill: "" } : {}),
+	...(elevated ? { elevated: "" } : {}),
+	...(bloated ? { bloated: "" } : {}),
 };
 ---
 
 <sc-button
-  variant={variant}
-  size={size}
-  aria-disabled={disabled ? "true" : undefined}
-  {...booleanAttrs}
-  {...rest}
+	variant={variant}
+	size={size}
+	aria-disabled={disabled ? "true" : undefined}
+	{...booleanAttrs}
+	{...rest}
 >
-  <button
-    type={type}
-    disabled={disabled}
-    name={name}
-    value={value}
-  >
-    <slot />
-  </button>
+	<button type={type} disabled={disabled} name={name} value={value}>
+		<slot />
+	</button>
 </sc-button>
 
 <style>
-  /* Host-like wrapper */
-  sc-button {
-    display: inline-block;
-  }
+	/* Host-like wrapper */
+	sc-button {
+		display: inline-block;
+	}
 
-  /* Actual interactive element */
-  sc-button > button {
-    font: inherit;
-    border-radius: 0.75rem;
-    padding: 0.5rem 0.9rem;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: 120ms ease;
-    background: #111;
-    color: #fff;
-  }
+	/* Actual interactive element */
+	sc-button > button {
+		font: inherit;
+		border-radius: 0.75rem;
+		padding: 0.5rem 0.9rem;
+		cursor: pointer;
+		border: 1px solid transparent;
+		transition: 120ms ease;
+		background: #57518b;
+		color: #fff;
+	}
 
-  /* Variants */
-  sc-button[variant="primary"] > button {
-    background: #111;
-    color: #fff;
-    border-color: #111;
-  }
+	/* Variants */
+	sc-button[variant="primary"] > button {
+		background: #57518b;
+		color: #fff;
+		border-color: #57518b;
+	}
 
-  sc-button[variant="neutral"] > button {
-    background: #2a2a2a;
-    color: #fff;
-    border-color: #2a2a2a;
-  }
+	sc-button[variant="neutral"] > button {
+		background: #7c6f6f;
+		color: #fff;
+		border-color: #7c6f6f;
+	}
 
-  sc-button[variant="danger"] > button {
-    background: #b00020;
-    color: #fff;
-    border-color: #b00020;
-  }
+	sc-button[variant="danger"] > button {
+		background: #b00020;
+		color: #fff;
+		border-color: #b00020;
+	}
 
-  sc-button[variant="success"] > button {
-    background: #0f7a3e;
-    color: #fff;
-    border-color: #0f7a3e;
-  }
+	sc-button[variant="success"] > button {
+		background: #0f7a3e;
+		color: #fff;
+		border-color: #0f7a3e;
+	}
 
-  /* Outline modifier */
-  sc-button[outline] > button {
-    background: transparent;
-    color: #111;
-    border-color: currentColor;
-  }
+	/* Outline modifier */
+	sc-button[outline] > button {
+		background: transparent;
+		color: #57518b;
+		border: 2px solid;
+		border-color: currentColor;
+	}
 
-  sc-button[outline][variant="neutral"] > button { color: #2a2a2a; }
-  sc-button[outline][variant="danger"] > button { color: #b00020; }
-  sc-button[outline][variant="success"] > button { color: #0f7a3e; }
+	sc-button[outline][variant="neutral"] > button {
+		color: #7c6f6f;
+	}
+	sc-button[outline][variant="danger"] > button {
+		color: #b00020;
+	}
+	sc-button[outline][variant="success"] > button {
+		color: #0f7a3e;
+	}
 
-  /* Pill modifier */
-  sc-button[pill] > button {
-    border-radius: 9999px;
-  }
+	/* Pill modifier */
+	sc-button[pill] > button {
+		border-radius: 9999px;
+	}
 
-  /* Elevated modifier */
-  sc-button[elevated] > button {
-    box-shadow: 0 0.2rem 0.3rem #00000069;
-  }
+	/* Elevated modifier */
+	sc-button[elevated] > button {
+		box-shadow: 0 0.1rem 0.2rem #00000069;
+	}
 
-  /* Bloated modifier (subtle inset dimension) */
-  sc-button[bloated] > button {
-    box-shadow:
-      inset -0.1rem 0 0.6rem currentColor;
-  }
+	/* Bloated modifier (subtle inset dimension) */
+	sc-button[bloated] > button {
+		border: none;
+		box-shadow: inset -0.1rem 0 0.6rem currentColor;
+	}
 
-  /* Sizes */
-  sc-button[size="small"] > button {
-    font-size: 0.875rem;
-    padding: 0.4rem 0.75rem;
-  }
+	sc-button[bloated][variant="neutral"] > button {
+		box-shadow: inset -0.1rem 0 0.6rem #564d4d;
+	}
+	sc-button[bloated][variant="danger"] > button {
+		box-shadow: inset -0.1rem 0 0.6rem #6a0014;
+	}
+	sc-button[bloated][variant="success"] > button {
+		box-shadow: inset -0.1rem 0 0.6rem #0a4d27;
+	}
 
-  sc-button[size="medium"] > button {
-    font-size: 1rem;
-  }
+	/* Sizes */
+	sc-button[size="small"] > button {
+		font-size: 0.875rem;
+		padding: 0.4rem 0.75rem;
+	}
 
-  sc-button[size="large"] > button {
-    font-size: 1.125rem;
-    padding: 0.65rem 1.1rem;
-  }
+	sc-button[size="medium"] > button {
+		font-size: 1rem;
+	}
 
-  /* Interaction */
-  sc-button > button:hover {
-    transform: translateY(-1px);
-  }
+	sc-button[size="large"] > button {
+		font-size: 1.125rem;
+		padding: 0.65rem 1.1rem;
+	}
 
-  sc-button > button:active {
-    transform: translateY(0);
-  }
+	/* Interaction */
+	sc-button > button:hover {
+		transform: translateY(-1px);
+	}
 
-  /* Disabled */
-  sc-button[aria-disabled="true"] > button,
-  sc-button > button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
-  }
+	sc-button > button:active {
+		transform: translateY(0);
+	}
+
+	/* Disabled */
+	sc-button[aria-disabled="true"] > button,
+	sc-button > button:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+		transform: none;
+		box-shadow: none;
+	}
 </style>
