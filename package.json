@@ -1,6 +1,6 @@
 {
   "name": "starcluster-ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "StarCluster UI — Astro UI component library.",
   "license": "MIT",
   "type": "module",
