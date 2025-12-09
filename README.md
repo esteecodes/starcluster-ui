@@ -14,20 +14,22 @@ npm install starcluster-ui
 
 ```astro
 ---
-import { Button } from "starcluster-ui";
+import { ScButton } from "starcluster-ui";
 ---
 
-<Button variant="solid">Hello</Button>
+<ScButton variant="primary" outline pill elevated size="small">
+  Button
+</ScButton>
 ```
 
 ### Direct path import
 
 ```astro
 ---
-import Button from "starcluster-ui/Button.astro";
+import ScButton from "starcluster-ui/ScButton.astro";
 ---
 
-<Button>Hi</Button>
+<ScButton variant="neutral">Hello</ScButton>
 ```
 
 ## Status

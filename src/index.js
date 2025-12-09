@@ -1,1 +1,2 @@
-export { default as Button } from "./Button.astro";
+export { default as ScButton } from "./components/button/ScButton.astro";
+

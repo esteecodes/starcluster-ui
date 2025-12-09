@@ -1,0 +1,152 @@
+---
+export interface Props {
+  variant?: "primary" | "neutral" | "danger" | "success";
+  size?: "small" | "medium" | "large";
+
+  outline?: boolean;
+  pill?: boolean;
+  elevated?: boolean;
+
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+
+  // Allow common passthrough attrs on the wrapper
+  id?: string;
+  class?: string;
+  style?: string;
+  title?: string;
+  name?: string;
+  value?: string;
+
+  // Accessibility passthrough
+  "aria-label"?: string;
+  "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+
+  // Data attrs
+  [key: `data-${string}`]: any;
+}
+
+const {
+  variant = "primary",
+  size = "medium",
+  outline = false,
+  pill = false,
+  elevated = false,
+  type = "button",
+  disabled = false,
+  ...rest
+} = Astro.props;
+---
+
+<sc-button
+  variant={variant}
+  size={size}
+  outline={outline}
+  pill={pill}
+  elevated={elevated}
+  aria-disabled={disabled ? "true" : undefined}
+  {...rest}
+>
+  <button type={type} disabled={disabled}>
+    <slot />
+  </button>
+</sc-button>
+
+<style>
+  /* Host-like wrapper */
+  sc-button {
+    display: inline-block;
+  }
+
+  /* Actual interactive element */
+  sc-button > button {
+    font: inherit;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 120ms ease;
+    background: #111;
+    color: #fff;
+  }
+
+  /* Variants */
+  sc-button[variant="primary"] > button {
+    background: #111;
+    color: #fff;
+    border-color: #111;
+  }
+
+  sc-button[variant="neutral"] > button {
+    background: #2a2a2a;
+    color: #fff;
+    border-color: #2a2a2a;
+  }
+
+  sc-button[variant="danger"] > button {
+    background: #b00020;
+    color: #fff;
+    border-color: #b00020;
+  }
+
+  sc-button[variant="success"] > button {
+    background: #0f7a3e;
+    color: #fff;
+    border-color: #0f7a3e;
+  }
+
+  /* Outline modifier */
+  sc-button[outline] > button {
+    background: transparent;
+    color: #111;
+    border-color: currentColor;
+  }
+
+  sc-button[outline][variant="neutral"] > button { color: #2a2a2a; }
+  sc-button[outline][variant="danger"] > button { color: #b00020; }
+  sc-button[outline][variant="success"] > button { color: #0f7a3e; }
+
+  /* Pill modifier */
+  sc-button[pill] > button {
+    border-radius: 9999px;
+  }
+
+  /* Elevated modifier */
+  sc-button[elevated] > button {
+    box-shadow: 0 0.4rem 1rem #0000001f;
+  }
+
+  /* Sizes */
+  sc-button[size="small"] > button {
+    font-size: 0.875rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  sc-button[size="medium"] > button {
+    font-size: 1rem;
+  }
+
+  sc-button[size="large"] > button {
+    font-size: 1.125rem;
+    padding: 0.65rem 1.1rem;
+  }
+
+  /* Interaction */
+  sc-button > button:hover {
+    transform: translateY(-1px);
+  }
+
+  sc-button > button:active {
+    transform: translateY(0);
+  }
+
+  /* Disabled */
+  sc-button[aria-disabled="true"] > button,
+  sc-button > button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+</style>
