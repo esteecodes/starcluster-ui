@@ -10,13 +10,15 @@ export interface Props {
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
 
-  // Allow common passthrough attrs on the wrapper
+  // form-related (should go to the inner button)
+  name?: string;
+  value?: string;
+
+  // wrapper-friendly common attrs
   id?: string;
   class?: string;
   style?: string;
   title?: string;
-  name?: string;
-  value?: string;
 
   // Accessibility passthrough
   "aria-label"?: string;
@@ -35,20 +37,31 @@ const {
   elevated = false,
   type = "button",
   disabled = false,
+  name,
+  value,
   ...rest
 } = Astro.props;
+
+const booleanAttrs = {
+  ...(outline ? { outline: true } : {}),
+  ...(pill ? { pill: true } : {}),
+  ...(elevated ? { elevated: true } : {}),
+};
 ---
 
 <sc-button
   variant={variant}
   size={size}
-  outline={outline}
-  pill={pill}
-  elevated={elevated}
   aria-disabled={disabled ? "true" : undefined}
+  {...booleanAttrs}
   {...rest}
 >
-  <button type={type} disabled={disabled}>
+  <button
+    type={type}
+    disabled={disabled}
+    name={name}
+    value={value}
+  >
     <slot />
   </button>
 </sc-button>
@@ -114,7 +127,7 @@ const {
 
   /* Elevated modifier */
   sc-button[elevated] > button {
-    box-shadow: 0 0.4rem 1rem #0000001f;
+    box-shadow: 0 0.2rem 0.3rem #00000069;
   }
 
   /* Sizes */
