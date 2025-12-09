@@ -139,17 +139,20 @@ const booleanAttrs = {
 	/* Bloated modifier (subtle inset dimension) */
 	sc-button[bloated] > button {
 		border: none;
-		box-shadow: inset -0.1rem 0 0.6rem currentColor;
+		box-shadow: inset -0.1rem 0 0.8rem currentColor;
 	}
 
+  sc-button[bloated][variant="primary"] > button {
+    box-shadow: inset -0.1rem 0 0.8rem #2f2c49;
+  }
 	sc-button[bloated][variant="neutral"] > button {
-		box-shadow: inset -0.1rem 0 0.6rem #564d4d;
+		box-shadow: inset -0.1rem 0 0.8rem #564d4d;
 	}
 	sc-button[bloated][variant="danger"] > button {
-		box-shadow: inset -0.1rem 0 0.6rem #6a0014;
+		box-shadow: inset -0.1rem 0 0.8rem #6a0014;
 	}
 	sc-button[bloated][variant="success"] > button {
-		box-shadow: inset -0.1rem 0 0.6rem #0a4d27;
+		box-shadow: inset -0.1rem 0 0.8rem #0a4d27;
 	}
 
 	/* Sizes */
