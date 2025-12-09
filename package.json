@@ -1,9 +1,10 @@
 {
   "name": "starcluster-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "StarCluster UI — Astro UI component library.",
   "license": "MIT",
   "type": "module",
+  "types": "./src/index.d.ts",
   "keywords": [
     "astro",
     "ui",
@@ -25,8 +26,13 @@
     "url": "https://github.com/esteecodes/starcluster-ui/issues"
   },
   "exports": {
-    ".": "./src/index.js",
-    "./Button.astro": "./src/Button.astro",
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./Button.astro": {
+      "default": "./src/Button.astro"
+    },
     "./package.json": "./package.json"
   },
   "files": [
