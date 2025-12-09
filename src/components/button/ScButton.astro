@@ -6,6 +6,7 @@ export interface Props {
   outline?: boolean;
   pill?: boolean;
   elevated?: boolean;
+  bloated?: boolean;
 
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
@@ -35,6 +36,7 @@ const {
   outline = false,
   pill = false,
   elevated = false,
+  bloated = false,
   type = "button",
   disabled = false,
   name,
@@ -42,10 +44,12 @@ const {
   ...rest
 } = Astro.props;
 
+// Presence-only attributes:
 const booleanAttrs = {
-  ...(outline ? { outline: true } : {}),
-  ...(pill ? { pill: true } : {}),
-  ...(elevated ? { elevated: true } : {}),
+  ...(outline ? { outline: "" } : {}),
+  ...(pill ? { pill: "" } : {}),
+  ...(elevated ? { elevated: "" } : {}),
+  ...(bloated ? { bloated: "" } : {}),
 };
 ---
 
@@ -128,6 +132,12 @@ const booleanAttrs = {
   /* Elevated modifier */
   sc-button[elevated] > button {
     box-shadow: 0 0.2rem 0.3rem #00000069;
+  }
+
+  /* Bloated modifier (subtle inset dimension) */
+  sc-button[bloated] > button {
+    box-shadow:
+      inset -0.1rem 0.6rem currentColor;
   }
 
   /* Sizes */
